@@ -1,23 +1,16 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
+import { UseFetch } from './components/UseFetch';
 import './App.css';
 
 function App() {
+  const [url, SetUrl]= useState('https://pokeapi.co/api/v2/pokemon')
+  const estado = UseFetch(url, SetUrl)
+  const {cargando,data}= estado
+  cargando? console.log('cargando'):console.log(data.results)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      
     </div>
   );
 }
