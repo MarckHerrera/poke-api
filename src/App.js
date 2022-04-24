@@ -1,17 +1,28 @@
-import React, {useState} from 'react';
-import { UseFetch } from './components/UseFetch';
+
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 
-function App() {
-  const [url, SetUrl]= useState('https://pokeapi.co/api/v2/pokemon')
-  const estado = UseFetch(url, SetUrl)
-  const {cargando,data}= estado
-  cargando? console.log('cargando'):console.log(data.results)
+import Pokemons from './components/Pokemons';
+import PokemonsInfo from './components/PokemonsInfo';
 
+
+function App() {
   return (
-    <div className="App">
-      
-    </div>
+
+    
+    <HashRouter>
+      <div>
+        <div className="App">
+          <div className='header'></div>
+        </div>
+
+      </div>
+      <Routes>
+        <Route path='/' element={<Pokemons />} />
+        <Route path='/pokemons/:id' element={<PokemonsInfo />} />
+      </Routes>
+    </HashRouter>
+    
   );
 }
 
